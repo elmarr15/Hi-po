@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi Stefany</title>
+
+    <link rel="stylesheet" href="landi design.css">
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="container">
+
+    <img src="Gif/c1.gif" alt="Image" class="photo" id="loveImage">
+    
+    <h1>Do You Love Me? ❤️</h1>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+    </div>
+
+</div>
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const loveImage = document.getElementById("loveImage");
+
+let noScale = 1;
+let yesScale = 1;
+let firstClick = true;
+let clickCount = 0;
+const maxClicks = 8;
+
+// Move No Button
+function moveButton(){
+
+    clickCount++;
+
+    // Change image on the 7th click
+    if(clickCount === 7){
+        loveImage.src = "Gif/c2.gif";
+    }
+
+    // Make the No button float after the first click
+    if(firstClick){
+        const rect = noBtn.getBoundingClientRect();
+
+        noBtn.style.position = "fixed";
+        noBtn.style.left = rect.left + "px";
+        noBtn.style.top = rect.top + "px";
+
+        firstClick = false;
+    }
+
+    // Random position
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+
+    // Shrink No button
+    noScale -= 0.12;
+
+    if(noScale < 0.2){
+        noScale = 0.2;
+    }
+
+    noBtn.style.transform = `scale(${noScale})`;
+
+    // Grow Yes button
+    yesScale += 0.12;
+    yesBtn.style.transform = `scale(${yesScale})`;
+
+    // Hide after 8 clicks
+    if(clickCount >= maxClicks){
+        noBtn.style.display = "none";
+    }
+}
+
+// No Button
+noBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    moveButton();
+});
+
+// Yes Button
+yesBtn.addEventListener("click", function(){
+    window.location.href = "landi2.html";
+});
+
+</script>
+
+</body>
+</html>
