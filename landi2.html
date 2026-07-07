@@ -26,7 +26,7 @@ body{
 /* Back Button */
 
 .back{
-    position:absolute;
+    position:fixed; /* Stays in the same position */
     top:30px;
     left:30px;
     text-decoration:none;
@@ -34,6 +34,7 @@ body{
     font-size:55px;
     font-weight:bold;
     transition:.3s;
+    z-index:1000;
 }
 
 .back:hover{
@@ -91,7 +92,7 @@ p{
 
 <div class="container">
 
-    <img src="Gif/cc1.gif" class="photo" id="slideshow">
+    <img src="Gif/cc1.gif" class="photo" id="slideshow" alt="Cute GIF">
 
     <h1>❤️ YEHEY! ❤️</h1>
 
@@ -105,7 +106,6 @@ p{
 const images = [
     "Gif/cc1.gif",
     "Gif/cc2.gif"
-    
 ];
 
 const slideshow = document.getElementById("slideshow");
