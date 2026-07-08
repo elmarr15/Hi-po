@@ -186,20 +186,7 @@ const slideshow = document.getElementById("slideshow");
 let current = 0;
 
 // Change image every 3 seconds
-setInterval(() => {
 
-    slideshow.style.opacity = "0";
-
-    setTimeout(() => {
-
-        current = (current + 1) % images.length;
-        slideshow.src = images[current];
-
-        slideshow.style.opacity = "1";
-
-    }, 300);
-
-}, 3000);
 
 </script>
 
